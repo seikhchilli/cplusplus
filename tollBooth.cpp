@@ -2,11 +2,11 @@
 #include<conio.h>
 using namespace std;
 
-class tollBooth{
-  int car_total;
+class tollBooth{//class
+  int car_total;//objects
   double cash_total;
 public:
-  tollBooth(): car_total(0), cash_total(0.00)
+  tollBooth(): car_total(0), cash_total(0.00)//constructor
   { }
 
   void payingCar(){
@@ -29,6 +29,7 @@ int main(){
   char entry;
   int  c;
   tollBooth tb1;
+  tollBooth tb2;
   do{
     entry = getche();
     switch (entry) {
@@ -37,14 +38,15 @@ int main(){
       break;
 
       case 'n':
-        tb1.nopayCar();
+        tb2.nopayCar();
       break;
 
     }
     c = entry;
-  }while(c != 27);
+  }while(c != 27);//27 is ascii key for escape
 
   tb1.display();
+  tb2.display();
   exit(0);
 
 

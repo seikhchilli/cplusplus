@@ -70,14 +70,49 @@ public:
   }
 };
 
+class disk : public publication, public sales{
+  enum disks{CD, DVD};
+  char entry;
+  disks disk_type;
+public:
+  void getdata(){
+    publication::getdata();
+    sales::getdata();
+    cout<<"Choose either of CD or DVD: \nFor CD, press c and for DVD, press d:"<<endl;
+
+    cin>>entry;
+    switch (entry) {
+      case 'c':
+        disk_type = CD;
+        break;
+      case 'd':
+        disk_type = DVD;
+        break;
+    }
+  }
+  void putdata(){
+    publication::putdata();
+    sales::putdata();
+    if(disk_type == 0){
+      cout<<"Disk type available: CD"<<endl;
+    }
+    else{
+      cout<<"Disk type available: DVD"<<endl;
+    }
+  }
+};
+
 int main(){
   book b1;
   tape t1;
+  disk d1;
   b1.getdata();
   t1.getdata();
 
   b1.putdata();
   t1.putdata();
+  d1.getdata();
+  d1.putdata();
 
   return 0;
 }

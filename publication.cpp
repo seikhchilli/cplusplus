@@ -2,7 +2,28 @@
 #include<string>
 using namespace std;
 
-class publication{
+class date{
+  int d;
+  int m;
+  int y;
+public:
+
+  void getdata(){
+    cout<<"Enter date:"<<endl;
+    cin>>d;
+    cout<<"Enter month:"<<endl;
+    cin>>m;
+    cout<<"Enter year:"<<endl;
+    cin>>y;
+  }
+
+  void putdata() const{
+    cout<<d<<"-"<<m<<"-"<<y;
+  }
+
+};
+
+class publication{            //publication
   string title;
   float price;
 public:
@@ -18,7 +39,23 @@ public:
   }
 };
 
-class sales{
+class publication2 : public publication, public date{
+  date publication_date;
+public:
+  void getdata(){
+    publication::getdata();
+    cout<<"Enter date of publication:"<<endl;
+    publication_date.getdata();
+  }
+  void putdata() const{
+    publication::putdata();
+    cout<<"Date of publication: ";
+    publication_date.putdata();
+  }
+
+};
+
+class sales{                //sales
   float sales[3];
 public:
   void getdata(){
@@ -36,47 +73,47 @@ void putdata() const{
 }
 };
 
-class book : public publication, public sales{
+class book : public publication2, public sales{    //book
   int pgcount;
 public:
   void getdata(){
-    publication::getdata();
+    publication2::getdata();
     sales::getdata();
     cout<<"Enter number of pages in book:"<<endl;
     cin>>pgcount;
   }
 
   void putdata() const{
-    publication::putdata();
+    publication2::putdata();
     sales::putdata();
     cout<<"Number of pages in book: "<<pgcount<<endl;
   }
 
 };
 
-class tape : public publication, public sales{
+class tape : public publication2, public sales{      //tapes
   float plytime;
 public:
   void getdata(){
-    publication::getdata();
+    publication2::getdata();
     sales::getdata();
     cout<<"Enter playing time of tape: "<<endl;
     cin>>plytime;
   }
   void putdata() const{
-    publication::putdata();
+    publication2::putdata();
     sales::putdata();
     cout<<"Playing time of tape: "<<plytime<<endl;
   }
 };
 
-class disk : public publication, public sales{
+class disk : public publication2, public sales{      //disk
   enum disks{CD, DVD};
   char entry;
   disks disk_type;
 public:
   void getdata(){
-    publication::getdata();
+    publication2::getdata();
     sales::getdata();
     cout<<"Choose either of CD or DVD: \nFor CD, press c and for DVD, press d:"<<endl;
 
@@ -91,7 +128,7 @@ public:
     }
   }
   void putdata(){
-    publication::putdata();
+    publication2::putdata();
     sales::putdata();
     if(disk_type == 0){
       cout<<"Disk type available: CD"<<endl;
@@ -108,10 +145,11 @@ int main(){
   disk d1;
   b1.getdata();
   t1.getdata();
+  d1.getdata();
 
   b1.putdata();
   t1.putdata();
-  d1.getdata();
+
   d1.putdata();
 
   return 0;

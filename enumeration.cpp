@@ -18,4 +18,5 @@ int main(){
   }
   cout<<day1;
   return 0;
+  
 }

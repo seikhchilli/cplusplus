@@ -16,6 +16,11 @@ public:
     cout<<"Deleting str.\n";
     delete[] str;
   }
+  void upit(){
+    for(int i = 0; i < strlen(str); i++){
+      *(str+i) = toupper(*(str + i));
+    }
+  }
 
   void display(){                     //display method
     cout<<str<<endl;
@@ -24,6 +29,7 @@ public:
 
 int main(){
   String s1 = "John Snow, you know nothing.";     //constructor used here of one argument
+  s1.upit();
   cout << "s1 = ";                                 //display string
   s1.display();
   return 0;

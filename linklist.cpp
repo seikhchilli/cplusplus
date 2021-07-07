@@ -15,6 +15,16 @@ public:
   }
   void additem(int d);                  //add data item
   void display();                        //display all links
+
+  ~linklist(){                              //destructor
+    link* current = first;
+    while(current != NULL){
+      link* nextone = current->next;              //stores the link for next one from current link as curret link is going to be deleted
+      cout<<"Deleting link"<<endl;
+      delete current;                           //current link deleted
+      current = nextone;                      //link stored in nextone is used to move to the next link
+    }
+  }
 };
 
 void linklist::additem(int d){             //add data item

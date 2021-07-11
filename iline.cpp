@@ -12,5 +12,5 @@ int main(){
     infile.getline(buffer, MAX);
     cout<<buffer<<endl;
   }
-  return 0;
+  return 0; 
 }
